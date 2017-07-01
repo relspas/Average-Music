@@ -1,0 +1,4 @@
+Conversion:
+I collected song files that were in wav format and used waon (http://waon.sourceforge.net/) to convert them to midi files. Some note interpolation is done, so the conversion process is not perfect. Next I used midi to csv to make the files more readable.
+
+How often are certain notes present in a song. Lets take a sample song: Southern Magnolia by Maneli Jamal (https://www.youtube.com/watch?v=BVfTB7FKbnY) and produce a graph of the presence of certain notes. Let's use two different weightign processes. First, we'll use the sum of the lengths of the note in the song to determine the weight in the song. Second, we'll use the lengths of the notes multiplied by their respective velocities. In midi, the velocity attribute is how loud the note is in a song.
