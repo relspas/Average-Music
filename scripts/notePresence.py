@@ -92,7 +92,7 @@ else:
 ax.set_xlabel('Note in midi notation (60-middle C)')
 
 if SAVEFLAG:
-   saveLocation = '../graphs/rnb/'+GRAPHSONGTITLE
+   saveLocation = '../graphs/'+GRAPHSONGTITLE
    if WEIGHTFLAG:
       saveLocation += '_weighted'
    saveLocation += '_note_presence.png'
