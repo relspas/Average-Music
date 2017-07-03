@@ -34,10 +34,35 @@ All scripts are in scripts folder:
 ```
 cd scripts
 ```
-### Display Fourier Transform of youtube video
+More man/options info at the top of each script file.
+
+### Display Summed Fourier Transform Average of mp3
+Put mp3 in Average-Music/mp3/
+```
+python notePresence.py <csv_file> [options]
+```
+
+### Display Summed Fourier Transform of mp3 from youtube video
+```
+chmod +x multipleYoutubeNotePresenceGraph.sh
+./youtubeNotePresenceGraph.sh <youtube_URL> <file_output_name>
+```
+
+### Display Summed Fourier Transform of mp3 from list of youtube videos
+Shell script reads from text file which needs to be formatted like this:
+```
+<youtube_URL> <file_name>
+<youtube_URL> <file_name>
+```
+Example:
+```
+https://www.youtube.com/watch?v=s0f_go8vQOY river_flows_in_you
+https://www.youtube.com/watch?v=pFZ5_q86u0E sherlock
+```
+Code:
 ```
 chmod +x youtubeNotePresenceGraph.sh
-./youtubeNotePresenceGraph.sh <youtube_URL> <file_output_name>
+./youtubeNotePresenceGraph.sh <youtube_list.txt>
 ```
 ### Convert all
 
