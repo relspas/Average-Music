@@ -4,9 +4,9 @@
 # Options:
 # -w : THe presence of notes in graph are weighted (Default: not weighted)
 # -t graph_song_title : This becomes the song title on the graph (Default: fils name)
-# -s graph_song_title : Save the graph in ../graphs/ (Default: not saved)
+# -s : Save the graph in ../graphs/ (Default: not saved)
 # --no-display : don't display graph (Default: displayed through X-11 forwarding)
-# python notePresence.py filename.csv -w -t Haru_Haru -s -d
+# python notePresence.py filename.csv -w -t Haru_Haru -s
 ##################################################
 
 import sys
@@ -92,7 +92,7 @@ else:
 ax.set_xlabel('Note in midi notation (60-middle C)')
 
 if SAVEFLAG:
-   saveLocation = '../graphs/'+GRAPHSONGTITLE
+   saveLocation = '../graphs/'+FILESAVENAME
    if WEIGHTFLAG:
       saveLocation += '_weighted'
    saveLocation += '_note_presence.png'
