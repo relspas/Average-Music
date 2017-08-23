@@ -12,7 +12,7 @@
 # -t graph_song_title : This becomes the song title on the graph (Default: fils name)
 # -s : Save the graph in ../graphs/ (Default: not saved)
 # --no-display : don't display graph (Default: displayed through X-11 forwarding)
-# python noteAverage.py songlist.txt -w -t Haru_Haru -s
+# python notePresence.py songlist.txt -w -t Haru_Haru -s
 ########################################
 
 import sys
@@ -55,7 +55,7 @@ labels = [""]*songCount
 
 csvListFilePointer = open(csvListFileName)
 for song in csvListFilePointer:
-   # print "looping"
+   print "looping"
    song = song.strip()
    csvFilePointer = open("../csv/"+song)
    lastNoteTime = [0]*128 #arr 0-127
@@ -100,7 +100,7 @@ for song in csvListFilePointer:
    for i in range(0,128):
       expectedPreprocess[i] = noteWeightsNormalized[i]*i
    averagePerSong[songNumber] = sum(expectedPreprocess)/sum(noteWeightsNormalized)
-   # print averagePerSong
+   print averagePerSong
 
    #variance 
    variancePreprocess = [0]*128
@@ -109,7 +109,7 @@ for song in csvListFilePointer:
    std_dev[songNumber] = math.sqrt(\
       sum(variancePreprocess)/sum(noteWeightsNormalized) \
       - (averagePerSong[songNumber]**2))
-   # print std_dev
+   print std_dev
 
    #label
    labels[songNumber] = song[:-4] 
@@ -121,21 +121,17 @@ fig, ax = plt.subplots()
 # ax.plot(averagePerSong,range(1,songCount+1),'bo')
 ax.errorbar(averagePerSong, range(1,songCount+1), xerr=std_dev, fmt='o', capthick=1)
 
-#Plot Size
-ax.set_xlim([40,100])
-
 #plot labels
 ax.set_ylabel('Song Name')
 if WEIGHTFLAG:
-   ax.set_xlabel('Weighted Average Pitch in song (60-middle C)')
-   ax.set_title('Weighted Average Pitch of Selected Songs')
-else:
    ax.set_xlabel('Average Pitch in song (60-middle C)')
    ax.set_title('Average Pitch of Selected Songs')
+else:
+   ax.set_xlabel('Weighted Average Pitch in song (60-middle C)')
+   ax.set_title('Weighted Average Pitch of Selected Songs')
 labels = [ '\n'.join(wrap(l, 20)) for l in labels ]
 plt.yticks(range(1,songCount+1), labels)
 
-#Saving
 if SAVEFLAG:
    saveLocation = '../graphs/'+FILESAVENAME
    if WEIGHTFLAG:
@@ -143,6 +139,5 @@ if SAVEFLAG:
    saveLocation += '_note_average.png'
    plt.savefig(saveLocation)
 
-#Displaying
 if DISPLAYFLAG:
    plt.show()
