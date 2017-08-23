@@ -3,6 +3,8 @@ Research trends in music categories
 
 This research effort was originally used to find out what average music looks like from a signal processing standpoint.
 
+Research Paper: http://raphaelelspas.com/averageMusic/.
+
 ## Setup
 Clone this repo.
 
